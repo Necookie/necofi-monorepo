@@ -1,0 +1,21 @@
+{
+  "name": "@necofi/web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "lint": "eslint . --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf .next"
+  },
+  "dependencies": {
+    "@necofi/api-client": "workspace:*",
+    "@necofi/ui": "workspace:*",
+    "@tanstack/react-query": "^5.66.11",
+    "next": "^14.2.24",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tamagui": "^1.125.23"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@necofi/api-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@necofi/types": "workspace:*",
+    "@necofi/utils": "workspace:*",
+    "@necofi/validation": "workspace:*",
+    "@tanstack/react-query": "^5.66.11",
+    "react": "18.2.0"
+  }
+}
