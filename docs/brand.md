@@ -1,247 +1,316 @@
-# NecoFi Design System & Brand Guidelines
+# NecoFi Brand, UI/UX, and Performance Guide
 
-## 1. Design Intent
+## 1. Purpose
 
-NecoFi is a calm, minimalist finance app designed to reduce stress and increase clarity.
+This document defines how NecoFi should feel across `apps/landing`, `apps/web`, and `apps/mobile`.
 
-The interface should feel:
-- Effortless
+It is not a general brand memo. It is a product-facing guide for building a premium minimalist experience with a simple, easy-to-use interface on the current stack:
+
+- Tamagui as the shared component library
+- `packages/theme` as the source of truth for tokens and themes
+- `packages/ui` as the shared primitive layer
+- Next.js for landing and web
+- Expo for mobile
+
+Every visual and interaction decision should support two outcomes:
+
+- The product feels calm, premium, and effortless
+- The product feels fast, light, and reliable
+
+---
+
+## 2. Brand Positioning
+
+NecoFi should feel like a private financial companion, not a noisy finance dashboard.
+
+The product experience should communicate:
+
+- Premium through restraint
+- Clarity through reduction
+- Trust through consistency
+- Ease through fewer decisions
+
+The interface should never feel:
+
+- Busy
+- Technical for the sake of looking advanced
+- Gamified
+- Over-explained
+- Visually loud
+
+---
+
+## 3. Core Experience Principles
+
+### Premium Minimalism
+
+- Keep the screen focused on one primary task at a time
+- Use fewer elements with better spacing
+- Let typography, spacing, and proportion create the premium feel
+- Prefer quiet confidence over decorative styling
+
+### Simple by Default
+
+- The next action should be obvious without instruction
+- Reduce visible options until they are needed
+- Show summaries first, details second
+- Use plain language and short labels
+
+### Performance Is Part of the Brand
+
+- Fast feedback is not an engineering bonus; it is part of the product identity
+- Transitions should feel immediate and controlled
+- Screens should load with clear structure and no visual instability
+- Interaction cost should stay low on both mobile and web
+
+### Cross-Platform Consistency
+
+- The brand must survive platform differences
+- Web, landing, and mobile should feel like the same product family
+- Shared primitives and theme tokens should do most of the consistency work
+
+---
+
+## 4. Visual Direction
+
+### Overall Feel
+
+The visual language should be:
+
+- Clean
 - Quiet
-- Focused
-- Premium without being flashy
+- Precise
+- Spacious
+- Modern without trend-chasing
 
-The goal is not to impress — it is to *disappear* and let users think clearly.
+The UI should read as premium because it is disciplined, not because it is embellished.
 
----
+### Surface Strategy
 
-## 2. Design Philosophy
+- Use layered surfaces sparingly
+- Prefer clean backgrounds and subtle separation
+- Avoid heavy card stacking
+- Avoid decorative gradients in product surfaces unless they are extremely restrained
 
-NecoFi should feel like:
+### Contrast Strategy
 
-- A notebook, not a dashboard
-- A calm assistant, not a financial authority
-- A reflection tool, not a control system
-
-Core principles:
-
-- Reduce noise
-- Show only what matters now
-- Let users breathe
-- Prioritize clarity over density
+- Use strong readability with soft overall contrast
+- Emphasize information hierarchy before color variety
+- Use accent color only when it clarifies meaning or action
 
 ---
 
-## 3. Visual Language
+## 5. Color Guidance
 
-### Overall Style
+The current shared theme already establishes a dark-first foundation with restrained neutrals and a blue accent. Brand decisions should stay aligned with that system unless the theme package is intentionally updated.
 
-- Minimalist and flat
-- Monochrome-first
-- Soft contrast, not harsh
-- Spacious layout
+### Color Roles
 
-Avoid:
-- Loud visuals
-- Overdesigned components
-- Information overload
-
----
-
-## 4. Color System
-
-### Primary
-
-- Black: #000000
-- White: #FFFFFF
-
-### Neutral Scale
-
-- #111111 (deep background)
-- #222222 (secondary background)
-- #666666 (secondary text)
-- #CCCCCC (borders, dividers)
-
-### Accent (use sparingly)
-
-- Green → positive (savings, good habits)
-- Blue → neutral (info, insights)
-- Red → minimal use (only critical warnings)
+- Background: quiet base layer
+- Surface: primary container layer
+- Text: high-legibility content layer
+- Muted text: secondary information only
+- Accent: action and meaning, used sparingly
+- Border: subtle structure, not decoration
 
 ### Rules
 
-- Use color for meaning, not decoration
-- 90% of UI should be neutral
-- Avoid gradients unless extremely subtle
+- Neutrals should dominate the interface
+- Accent color should be rare enough to retain meaning
+- Positive, warning, and destructive colors should appear only when the data or action requires them
+- Color should never be the only way meaning is communicated
+
+### Avoid
+
+- Rainbow dashboards
+- Large saturated areas in the product UI
+- Multiple competing accent colors on one screen
+- Gradients used as decoration in core workflows
 
 ---
 
-## 5. Typography
+## 6. Typography
 
-### Font
+Typography should feel clear, composed, and unforced.
 
-- Sans-serif only (Inter preferred)
+### Principles
 
-### Hierarchy
+- Prioritize legibility over personality in product UI
+- Use weight and spacing to create hierarchy instead of excessive size jumps
+- Keep headings concise and calm
+- Keep body copy direct and low-friction
 
-- Title: large, medium weight
-- Body: regular, highly readable
-- Labels: small, subtle
+### Implementation Guidance
+
+- Align product typography to shared Tamagui font definitions in `packages/theme`
+- Do not introduce one-off font systems inside individual apps
+- If font changes are needed, update them through the shared theme rather than per-screen styling
+
+### Tone in Layout
+
+- Short headlines
+- Compact supporting copy
+- Minimal label noise
+
+---
+
+## 7. Spacing and Layout
+
+Spacing is one of the main sources of premium feel in NecoFi.
 
 ### Rules
 
-- No decorative fonts
-- Avoid heavy bold usage
-- Prioritize readability over style
+- Prefer breathing room over density
+- Use the shared token scale instead of arbitrary values
+- Keep layout rhythm consistent across screens
+- Avoid cramming charts, controls, and helper text into one block
+
+### Layout Behavior
+
+- One dominant action per view
+- Clear grouping between information and controls
+- Progressive disclosure over dense multi-section screens
+- Mobile-first simplicity even on larger screens
+
+### Avoid
+
+- Tight clusters of controls
+- Long walls of equally weighted content
+- Multi-column layouts for core product tasks unless there is a clear usability gain
 
 ---
 
-## 6. Spacing System
+## 8. Tamagui System Rules
 
-Use consistent spacing scale:
+Tamagui is the component foundation, not just a convenience library. The product should look premium because the shared system is disciplined.
 
-- 4px (micro)
-- 8px (tight)
-- 12px (compact)
-- 16px (default)
-- 24px (section spacing)
-- 32px+ (major separation)
+### Required Approach
 
-Rules:
+- Build from shared primitives in `packages/ui` first
+- Use tokens from `packages/theme` for color, spacing, radius, and typography
+- Prefer Tamagui props and tokens over ad hoc CSS values
+- Extend the shared system when a pattern repeats instead of creating isolated screen-level styling
 
-- Always prefer more spacing than less
-- Never crowd elements
-- White space is part of the design
+### Component Philosophy
 
----
+- Components should feel calm and intentional
+- States should be obvious without being dramatic
+- Radius, spacing, and border treatment should stay consistent across apps
 
-## 7. Layout Principles
+### Avoid
 
-- Single primary focus per screen
-- Clear visual hierarchy
-- Group related items
-- Avoid multi-column complexity (especially mobile-first)
-
-Rules:
-
-- If a screen feels busy → remove something
-- If multiple actions compete → simplify
+- One-off visual exceptions that break system rhythm
+- Per-app component behavior that changes the brand feel
+- Styling shortcuts that ignore shared tokens
 
 ---
 
-## 8. Components
+## 9. Component Feel
 
 ### Buttons
 
-- Primary: solid (high importance)
-- Secondary: outline or ghost
-- Rounded corners (8–12px)
-
-Rules:
-- Keep labels short
-- Avoid multiple primary buttons on one screen
-
----
-
-### Cards
-
-- Used as main containers
-- Soft separation (not heavy borders)
-- Padding: 16–24px
-
-Avoid:
-- Over-stacking cards
-- Nested complexity
-
----
+- Primary buttons should feel decisive, not loud
+- Secondary buttons should support without competing
+- Labels should be short and action-first
+- Button density should stay low; avoid screens full of equal-priority actions
 
 ### Inputs
 
-- Clean, minimal borders
-- Clear labels (always visible)
-- No unnecessary icons
+- Inputs should feel clear, stable, and low-friction
+- Labels should remain visible
+- Placeholder text should not carry essential meaning
+- Focus states should be crisp and restrained
 
-Focus state:
-- Subtle highlight, not glowing/neon
+### Cards and Containers
 
----
+- Use cards only when grouping improves comprehension
+- Prefer subtle borders or surface separation over heavy framing
+- Keep padding generous enough to feel premium
 
 ### Lists
 
-- Simple vertical flow
-- Clear spacing between items
-- No heavy separators
+- Lists should scan quickly
+- Each row should have one clear purpose
+- Supporting metadata should be secondary and quiet
 
 ---
 
-## 9. Interaction Design
+## 10. Interaction Design
 
-### Speed
+### Speed Expectations
 
-- Core actions should take 1–2 taps
-- No friction for frequent actions
+- Frequent actions should take as few steps as possible
+- UI response should feel immediate after input
+- Loading should preserve structure and reduce perceived waiting
+
+### Motion Principles
+
+- Motion should clarify cause and effect
+- Keep transitions short and smooth
+- Use animation to support orientation, not decoration
 
 ### Feedback
 
-- Subtle animations
-- Instant response
-- No dramatic transitions
+- Success feedback should be subtle
+- Error feedback should be clear and actionable
+- Avoid celebratory or playful responses in core finance flows
 
-### Motion
+### Navigation
 
-- Smooth and quick
-- Functional, not decorative
-
-Avoid:
-- Bouncy or playful animations
-- Delays
+- Navigation should be predictable and low-effort
+- Users should not need to memorize where things live
+- Important actions should stay discoverable without crowding the interface
 
 ---
 
-## 10. Information Design
+## 11. Performance Standards
 
-- Show only essential data
-- Hide advanced data behind interaction
+Performance is part of perceived product quality and must shape UI decisions from the start.
 
-Example:
+### UX Performance Rules
 
-Instead of:
-→ Showing everything at once
+- Avoid layout shift
+- Avoid heavy first-load experiences
+- Avoid unnecessary spinners when skeletons or immediate structure can be shown
+- Reduce animation and rendering work in repeated lists and dense views
 
-Do:
-→ Show summary → allow tap for detail
+### Implementation Rules
+
+- Prefer shared primitives over bespoke heavy components
+- Reuse theme tokens instead of calculating visual values ad hoc
+- Keep screens focused so component trees stay lean
+- Treat every extra visual effect as a performance cost that must justify itself
+
+### Product Standard
+
+If a screen looks premium but feels slow, it is off-brand.
 
 ---
 
-## 11. Microcopy (UI Text)
+## 12. Content and Microcopy
 
-Tone:
+The voice should be calm, direct, and respectful.
 
-- Calm
+### Tone
+
+- Clear
 - Neutral
-- Slightly reflective
+- Reassuring without sounding soft
+- Reflective without sounding judgmental
 
-Examples:
+### Writing Rules
 
-✔ "Do you really need this?"
-✔ "You spent more than usual today."
+- Use short sentences
+- Use plain language
+- Say what happened and what the user can do next
+- Remove filler copy that does not help decision-making
 
-Avoid:
+### Avoid
 
-✘ "Warning!"
-✘ "You failed your budget."
-
----
-
-## 12. Behavioral UI Layer
-
-Design should support reflection:
-
-- Prompts should feel optional, not forced
-- No guilt-driven language
-- Encourage awareness, not control
-
-UI should feel like:
-→ a quiet nudge, not a loud alert
+- Alarmist wording
+- Shame-based financial language
+- Excessive finance jargon
+- Clever copy that slows comprehension
 
 ---
 
@@ -249,82 +318,67 @@ UI should feel like:
 
 ### Empty States
 
-- Calm and encouraging
-- No pressure
-
-Example:
-"You haven’t added anything yet."
-
----
+- Calm and useful
+- Explain the next step simply
+- Avoid pressure, guilt, or fake enthusiasm
 
 ### Error States
 
-- Clear and simple
-- No technical jargon
-
----
+- State the problem clearly
+- Give a next action where possible
+- Do not expose technical language unless it is truly useful
 
 ### Success States
 
-- Subtle confirmation
-- No over-celebration
+- Confirm completion with restraint
+- Do not over-celebrate routine actions
+
+### Loading States
+
+- Preserve layout structure
+- Keep the interface feeling stable
+- Favor subtle skeletons or placeholders over disruptive blockers
 
 ---
 
-## 14. Dark / Light Mode
+## 14. Accessibility and Ease of Use
 
-- Both must feel native, not inverted
+Simple should also mean accessible.
 
-Dark mode:
-- True dark or near-black
-- Soft contrast text
+### Rules
 
-Light mode:
-- Clean white
-- Gentle contrast
+- Maintain strong text contrast
+- Make touch targets comfortable on mobile
+- Keep labels explicit
+- Do not rely on hover-only behavior for important meaning
+- Ensure flows are understandable without animation
 
----
-
-## 15. Premium Feel Rules
-
-Premium is achieved through:
-
-- Space
-- Consistency
-- Smoothness
-- Restraint
-
-Not through:
-
-- Flashy visuals
-- Complex UI
-- Too many features on screen
+Premium UI that creates friction is not premium.
 
 ---
 
-## 16. What to Avoid
+## 15. What to Avoid
 
-- Cluttered dashboards
-- Too many charts
-- Bright colors everywhere
-- Complex navigation
-- Feature-first design
-- "Finance app look" (overly technical UI)
+- Finance-dashboard clutter
+- Too many charts on a single screen
+- Overuse of accent color
+- Decorative gradients in product workflows
+- Dense control panels
+- Multiple primary actions competing in one section
+- Unnecessary motion
+- Custom styling that bypasses Tamagui tokens
+- Premium signifiers that hurt performance
 
 ---
 
-## 17. Final Rule
+## 16. Final Decision Filter
 
-If it feels:
+Before shipping a screen or component, ask:
 
-- Busy → remove something  
-- Loud → simplify  
-- Confusing → reduce  
+- Does this feel simpler than the typical finance app?
+- Does this feel premium because of discipline rather than decoration?
+- Does this use the shared Tamagui and theme system correctly?
+- Does this reduce cognitive load?
+- Does this feel fast on both web and mobile?
 
-If it feels:
-
-- Calm  
-- Clear  
-- Effortless  
-
-Then it fits NecoFi.
+If the answer is not clearly yes, revise it.
