@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'necofi landing',
-  description: 'NecoFi marketing site',
+  title: 'NecoFi | Minimalist Finance App',
+  description: 'A minimalist finance app landing template for NecoFi.',
 };
 
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
