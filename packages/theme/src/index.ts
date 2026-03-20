@@ -2,13 +2,13 @@ import { createFont, createTamagui, createTokens } from 'tamagui';
 
 const tokens = createTokens({
   color: {
-    background: '#08111f',
-    surface: '#0f172a',
-    surfaceStrong: '#162033',
-    text: '#f8fafc',
-    textMuted: '#94a3b8',
-    accent: '#38bdf8',
-    border: '#1e293b',
+    background: '#ffffff',
+    surface: '#ffffff',
+    surfaceStrong: '#f4f4f5',
+    text: '#09090b',
+    textMuted: '#71717a',
+    accent: '#2563eb',
+    border: '#e4e4e7',
   },
   space: {
     0: 0,
@@ -32,10 +32,10 @@ const tokens = createTokens({
   },
   radius: {
     0: 0,
-    1: 6,
-    2: 10,
-    3: 14,
-    4: 18,
+    1: 4,
+    2: 8,
+    3: 12,
+    4: 16,
   },
   zIndex: {
     0: 0,
@@ -93,7 +93,7 @@ export const appTheme = createTamagui({
         6: 40,
       },
       weight: {
-        4: '600',
+        4: '500',
         7: '700',
       },
       letterSpacing: {
@@ -105,10 +105,10 @@ export const appTheme = createTamagui({
   tokens,
   themes: {
     light: {
-      background: '#f8fafc',
-      color: '#0f172a',
-      borderColor: '#cbd5e1',
-      accentColor: '#0ea5e9',
+      background: '#ffffff',
+      color: '#09090b',
+      borderColor: '#e4e4e7',
+      accentColor: '#2563eb',
     },
     dark: {
       background: '#08111f',
@@ -117,7 +117,7 @@ export const appTheme = createTamagui({
       accentColor: '#38bdf8',
     },
   },
-  defaultTheme: 'dark',
+  defaultTheme: 'light',
   shorthands: {
     p: 'padding',
     px: 'paddingHorizontal',

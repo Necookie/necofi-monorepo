@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { Paragraph, SizableText, Stack, YStack } from 'tamagui';
+import { Paragraph, SizableText, Stack, YStack, XStack } from 'tamagui';
 
 export const Screen = ({ children }: PropsWithChildren) => (
   <YStack
@@ -8,32 +8,46 @@ export const Screen = ({ children }: PropsWithChildren) => (
     paddingHorizontal="$5"
     paddingVertical="$6"
     gap="$4"
+    maxWidth={1080}
+    width="100%"
+    marginHorizontal="auto"
   >
     {children}
   </YStack>
 );
 
-export const Card = ({ children }: PropsWithChildren) => (
+export const Card = ({ children, ...props }: PropsWithChildren<any>) => (
   <Stack
     backgroundColor="$surface"
     borderWidth={1}
     borderColor="$borderColor"
-    borderRadius="$3"
-    padding="$4"
-    gap="$3"
+    borderRadius="$4"
+    padding="$5"
+    gap="$4"
+    {...props}
   >
     {children}
   </Stack>
 );
 
-export const Title = ({ children }: PropsWithChildren) => (
-  <SizableText size="$6" fontWeight="700" color="$color">
+export const Title = ({ children, ...props }: PropsWithChildren<any>) => (
+  <SizableText size="$6" fontWeight="500" color="$color" letterSpacing={-0.5} {...props}>
     {children}
   </SizableText>
 );
 
-export const Copy = ({ children }: PropsWithChildren) => (
-  <Paragraph color="$color" opacity={0.82}>
+export const Copy = ({ children, ...props }: PropsWithChildren<any>) => (
+  <Paragraph color="$color" opacity={0.7} lineHeight={24} {...props}>
     {children}
   </Paragraph>
+);
+
+export const HeaderStack = ({ children }: PropsWithChildren) => (
+  <XStack justifyContent="space-between" alignItems="flex-end" marginBottom="$4">
+    {children}
+  </XStack>
+);
+
+export const Divider = () => (
+  <Stack height={1} backgroundColor="$borderColor" width="100%" />
 );
